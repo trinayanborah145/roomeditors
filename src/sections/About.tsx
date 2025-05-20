@@ -4,15 +4,22 @@ import { useInView } from 'react-intersection-observer';
 import { Award, Home, Users } from 'lucide-react';
 
 const About = () => {
+  const [countersMounted, setCountersMounted] = React.useState(false);
   const { ref, inView } = useInView({
-    threshold: 0.3,
-    triggerOnce: false,
+    threshold: 0.1,
+    triggerOnce: true,
   });
+
+  React.useEffect(() => {
+    if (inView) {
+      setCountersMounted(true);
+    }
+  }, [inView]);
 
   const stats = [
     { icon: <Home size={28} />, value: 300, text: 'Projects Completed', suffix: '+' },
     { icon: <Users size={28} />, value: 200, text: 'Happy Clients', suffix: '+' },
-    { icon: <Award size={28} />, value: 15, text: 'Industry Recognition', suffix: '' },
+    { icon: <Award size={28} />, value: 98, text: 'Client Satisfaction', suffix: '%' },
   ];
 
   const team = [
@@ -101,8 +108,8 @@ In just a few years, Room Editors has built a strong reputation for delivering r
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          {stats.map((stat, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20" ref={ref}>
+          {countersMounted && stats.map((stat, index) => (
             <div
               key={index}
               className="bg-white rounded-lg shadow-md p-8 text-center transform hover:translate-y-[-5px] transition-all duration-300"
