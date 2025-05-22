@@ -5,12 +5,36 @@ const LoadingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time (you can adjust the duration)
-    const timer = setTimeout(() => {
+    // Check if the page has already loaded
+    if (document.readyState === 'complete') {
       setIsLoading(false);
-    }, 2000); // 2 seconds
+      return;
+    }
 
-    return () => clearTimeout(timer);
+    // Set a maximum loading time (5 seconds) to ensure it doesn't get stuck
+    const maxLoadTime = setTimeout(() => {
+      setIsLoading(false);
+      document.body.style.overflow = 'auto';
+    }, 5000);
+
+    // Handle page load
+    const handleLoad = () => {
+      clearTimeout(maxLoadTime);
+      setIsLoading(false);
+      document.body.style.overflow = 'auto';
+    };
+
+    // Add event listeners
+    window.addEventListener('load', handleLoad);
+    window.addEventListener('DOMContentLoaded', handleLoad);
+
+    // Cleanup
+    return () => {
+      clearTimeout(maxLoadTime);
+      window.removeEventListener('load', handleLoad);
+      window.removeEventListener('DOMContentLoaded', handleLoad);
+      document.body.style.overflow = 'auto';
+    };
   }, []);
 
   if (!isLoading) return null;

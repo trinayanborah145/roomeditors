@@ -23,21 +23,45 @@ function App() {
       duration: 1000,
       once: false,
       mirror: true,
+      disable: window.innerWidth < 768 // Disable AOS on mobile for better performance
     });
 
-    // Hide loading screen after all assets are loaded
-    window.addEventListener('load', () => {
-      setTimeout(() => {
+    // Handle window resize for AOS
+    const handleResize = () => {
+      AOS.refresh();
+      if (window.innerWidth < 768) {
+        AOS.refreshHard();
+      }
+    };
+
+    // Add resize event listener
+    window.addEventListener('resize', handleResize);
+
+    // Check if page is already loaded
+    if (document.readyState === 'complete') {
+      setIsLoading(false);
+      document.body.style.overflow = 'auto';
+    } else {
+      // Add load event listener
+      const handleLoad = () => {
         setIsLoading(false);
         document.body.style.overflow = 'auto';
-      }, 2000); // Match this with the loading screen duration
-    });
+      };
 
-    // Prevent scrolling while loading
-    document.body.style.overflow = 'hidden';
+      window.addEventListener('load', handleLoad);
+      
+      // Cleanup
+      return () => {
+        window.removeEventListener('load', handleLoad);
+        window.removeEventListener('resize', handleResize);
+        document.body.style.overflow = 'auto';
+      };
+    }
 
+    // Cleanup for the case where page is already loaded
     return () => {
-      window.removeEventListener('load', () => {});
+      window.removeEventListener('resize', handleResize);
+      document.body.style.overflow = 'auto';
     };
   }, []);
 
