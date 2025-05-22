@@ -6,13 +6,19 @@ import { Award, Home, Users } from 'lucide-react';
 const About = () => {
   const [countersMounted, setCountersMounted] = React.useState(false);
   const { ref, inView } = useInView({
-    threshold: 0.1,
+    threshold: 0.2,
     triggerOnce: true,
   });
 
   React.useEffect(() => {
     if (inView) {
-      setCountersMounted(true);
+      // Small delay to ensure the component is fully in view before starting animation
+      const timer = setTimeout(() => {
+        setCountersMounted(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    } else {
+      setCountersMounted(false);
     }
   }, [inView]);
 
@@ -118,8 +124,16 @@ In just a few years, Room Editors has built a strong reputation for delivering r
             >
               <div className="text-amber-500 mb-4 flex justify-center">{stat.icon}</div>
               <h3 className="text-4xl font-bold text-gray-800 mb-2">
-                {inView ? (
-                  <CountUp end={stat.value} duration={2.5} separator="," suffix={stat.suffix} />
+                {countersMounted ? (
+                  <CountUp 
+                    end={stat.value} 
+                    duration={2.5} 
+                    separator="," 
+                    suffix={stat.suffix}
+                    enableScrollSpy
+                    scrollSpyOnce
+                    delay={0.3}
+                  />
                 ) : (
                   "0"
                 )}

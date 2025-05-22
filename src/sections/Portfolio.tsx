@@ -57,7 +57,7 @@ const Portfolio = () => {
       id: 2,
       title: 'Mobile Store Interior in Pathshala',
       category: 'commercial',
-      image: 'https://images.pexels.com/photos/1125136/pexels-photo-1125136.jpeg',
+      image: '/images/phn.jpeg',
       video: '/pathshala.mp4'
     },
     {
@@ -69,37 +69,37 @@ const Portfolio = () => {
     },
     {
       id: 4,
-      title: 'Super Mart Interior in Bongaigaon',
-      category: 'hospitality',
-      image: 'https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg',
+      title: 'Ardaas Super Market in Baddi',
+      category: 'commercial',
+      image: '/images/ardaas-super-market-baddi-house-of-dc-3.jpg',
       video: '/bongaigaon.mp4'
     },
     {
       id: 5,
       title: 'Flat Interior in Six Mile Guwahati',
       category: 'office',
-      image: 'https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg',
+      image: '/images/ftint.jpg',
       video: '/dbre.mp4'
     },
     {
       id: 6,
       title: 'Luxury GYM Interior in Guwahati',
       category: 'residential',
-      image: 'https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg',
+      image: '/images/Himat_WeightRoom.webp',
       video: '/GYM.mp4'
     },
     {
       id: 7,
       title: 'Principal Cabin Interior in Goalpara',
       category: 'hospitality',
-      image: 'https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg',
+      image: '/images/pcabin.jpg',
       video: '/KINGKOR.mp4'
     },
     {
       id: 8,
       title: 'Modular Kitchen in Dibrugarh',
       category: 'office',
-      image: 'https://images.pexels.com/photos/267507/pexels-photo-267507.jpeg',
+      image: '/images/ktch.webp',
       video: '/Modular Kitchen.mp4'
     },
   ];
