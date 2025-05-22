@@ -69,7 +69,7 @@ const Portfolio = () => {
     },
     {
       id: 4,
-      title: 'Ardaas Super Market in Baddi',
+      title: 'Super Mart in Bongaigaon',
       category: 'commercial',
       image: '/images/ardaas-super-market-baddi-house-of-dc-3.jpg',
       video: '/bongaigaon.mp4'
@@ -77,28 +77,28 @@ const Portfolio = () => {
     {
       id: 5,
       title: 'Flat Interior in Six Mile Guwahati',
-      category: 'office',
+      category: 'residential',
       image: '/images/ftint.jpg',
       video: '/dbre.mp4'
     },
     {
       id: 6,
       title: 'Luxury GYM Interior in Guwahati',
-      category: 'residential',
+      category: 'commercial',
       image: '/images/Himat_WeightRoom.webp',
       video: '/GYM.mp4'
     },
     {
       id: 7,
       title: 'Principal Cabin Interior in Goalpara',
-      category: 'hospitality',
+      category: 'office',
       image: '/images/pcabin.jpg',
       video: '/KINGKOR.mp4'
     },
     {
       id: 8,
       title: 'Modular Kitchen in Dibrugarh',
-      category: 'office',
+      category: 'residential',
       image: '/images/ktch.webp',
       video: '/Modular Kitchen.mp4'
     },
